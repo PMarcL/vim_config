@@ -21,12 +21,11 @@ syntax on
 set backspace=indent,eol,start
 set cursorline
 set hidden
-set noexpandtab
+set expandtab
 set number
 set ruler
-set shiftwidth=8
-set softtabstop=8
-set tabstop=8
+set shiftwidth=2
+set tabstop=2
 set title
 
 " Key mapping
