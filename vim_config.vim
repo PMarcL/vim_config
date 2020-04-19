@@ -11,6 +11,7 @@ Plugin 'VundleVim/Vundle.vim'
 " Utility
 Plugin 'scrooloose/nerdtree'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'grailbio/bazel-compilation-database'
 
 call vundle#end()
 
