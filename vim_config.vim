@@ -20,6 +20,7 @@ call vundle#end()
 filetype plugin indent on
 syntax on
 
+set completeopt-=preview
 set backspace=indent,eol,start
 set cursorline
 set hidden
