@@ -12,3 +12,12 @@ so /path/to/this/repo/vim_config.vim
 
 To install YouCompleteMe, see the [this](https://vi.stackexchange.com/questions/7470/how-to-install-youcompleteme-with-clang-completer-offline)
 stackexchange thread.
+
+## clang-format
+
+Install clang-format as follows:
+
+```shell
+$ sudo apt-get update
+$ sudo apt-get install clang-format
+```
