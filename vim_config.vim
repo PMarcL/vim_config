@@ -13,6 +13,7 @@ Plugin 'morhetz/gruvbox'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'grailbio/bazel-compilation-database'
+Plugin 'tikhomirov/vim-glsl'
 
 call vundle#end()
 
@@ -35,6 +36,10 @@ set tabstop=2
 set title
 set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=lightgrey
+
+" Make vim-glsl support files with the .vs and .fs extensions.
+
+autocmd! BufNewFile,BufRead *.vs,*.fs set ft=glsl
 
 " Format on Save for c, c++ code.
 
