@@ -9,6 +9,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " Utility
+Plugin 'morhetz/gruvbox'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'grailbio/bazel-compilation-database'
@@ -20,6 +21,8 @@ call vundle#end()
 filetype plugin indent on
 syntax on
 
+colorscheme gruvbox
+set background=dark
 set completeopt-=preview
 set backspace=indent,eol,start
 set cursorline
@@ -30,6 +33,8 @@ set ruler
 set shiftwidth=2
 set tabstop=2
 set title
+set colorcolumn=80
+highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 " Format on Save for c, c++ code.
 
@@ -42,6 +47,7 @@ autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()
 " Key mapping
 
 map <C-n> :NERDTreeToggle<CR>
+nmap <C-g> :YcmCompleter GoTo<CR>
 
 " Use Ctrl+j and Ctrl+k to move left and right when multiple windows are open.
 nmap <C-j> <C-w>j
