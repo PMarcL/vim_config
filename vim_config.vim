@@ -14,6 +14,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'grailbio/bazel-compilation-database'
 Plugin 'tikhomirov/vim-glsl'
+Plugin 'ctrlpvim/ctrlp.vim'
 
 call vundle#end()
 
@@ -48,6 +49,12 @@ function! Formatonsave()
   py3f /usr/share/vim/addons/syntax/clang-format.py
 endfunction
 autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()
+
+" CtrlP setup
+
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
 
 " Key mapping
 
