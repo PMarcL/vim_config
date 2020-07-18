@@ -84,8 +84,10 @@ let g:ctrlp_working_path_mode = 'ra'
 " Key mapping
 
 map <C-n> :NERDTreeToggle<CR>
-nmap <C-g> :YcmCompleter GoTo<CR>
 
+" Move the selected text up or down in visual mode.
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
 " Use Ctrl+j and Ctrl+k to move left and right when multiple windows are open.
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
