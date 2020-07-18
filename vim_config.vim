@@ -1,22 +1,14 @@
-" ------------------------- Vundle Setup -------------------------
-filetype off
+" ------------------------- vim-plug Setup -------------------------
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin('~/.vim/plugged')
 
-" let Vundle manage Vundle
-Plugin 'VundleVim/Vundle.vim'
+Plug 'morhetz/gruvbox'
+Plug 'scrooloose/nerdtree'
+Plug 'tikhomirov/vim-glsl'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" Utility
-Plugin 'morhetz/gruvbox'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'grailbio/bazel-compilation-database'
-Plugin 'tikhomirov/vim-glsl'
-Plugin 'ctrlpvim/ctrlp.vim'
-
-call vundle#end()
+call plug#end()
 
 " ------------------------- PML Setup -------------------------
 
@@ -35,6 +27,8 @@ set ruler
 set shiftwidth=2
 set tabstop=2
 set title
+set nobackup
+set nowritebackup
 set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
@@ -49,6 +43,37 @@ function! Formatonsave()
   py3f /usr/share/vim/addons/syntax/clang-format.py
 endfunction
 autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()
+
+" CoC setup
+
+set cmdheight=2
+set updatetime=300
+set shortmess+=c
+set signcolumn=yes
+
+" Use tab to trigger completion with characters agead and navigate.
+inoremap <silent><expr> <TAB>
+  \ pumvisible() ? "\<C-n>" :
+  \ <SID>check_back_space() ? "\<TAB>" :
+  \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1] =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Remap keys for gotos.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Highlight symbol under cursor on CursorHold.
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " CtrlP setup
 
