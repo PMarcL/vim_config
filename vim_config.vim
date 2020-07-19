@@ -1,5 +1,3 @@
-" ------------------------- vim-plug Setup -------------------------
-
 call plug#begin('~/.vim/plugged')
 
 Plug 'morhetz/gruvbox'
@@ -9,8 +7,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
-
-" ------------------------- PML Setup -------------------------
 
 filetype plugin indent on
 syntax on
@@ -33,16 +29,28 @@ set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 " Make vim-glsl support files with the .vs and .fs extensions.
-
 autocmd! BufNewFile,BufRead *.vs,*.fs set ft=glsl
 
 " Format on Save for c, c++ code.
-
 function! Formatonsave()
   let l:formatdiff = 1
   py3f /usr/share/vim/addons/syntax/clang-format.py
 endfunction
 autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()
+
+map <C-n> :NERDTreeToggle<CR>
+
+" Move the selected text up or down in visual mode.
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+" Use Ctrl+j and Ctrl+k to move left and right when multiple windows are open.
+nmap <C-j> <C-w>j
+nmap <C-k> <C-w>k
+nmap <C-h> <C-w>h
+nmap <C-l> <C-w>l
+" Bind jk in insert mode to Escape, leaving insert mode.
+inoremap jk <Esc>
+inoremap <Esc> <Nop>
 
 " CoC setup
 
@@ -51,7 +59,7 @@ set updatetime=300
 set shortmess+=c
 set signcolumn=yes
 
-" Use tab to trigger completion with characters agead and navigate.
+" Use tab to trigger completion with characters ahead and navigate.
 inoremap <silent><expr> <TAB>
   \ pumvisible() ? "\<C-n>" :
   \ <SID>check_back_space() ? "\<TAB>" :
@@ -80,19 +88,3 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
-
-" Key mapping
-
-map <C-n> :NERDTreeToggle<CR>
-
-" Move the selected text up or down in visual mode.
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
-" Use Ctrl+j and Ctrl+k to move left and right when multiple windows are open.
-nmap <C-j> <C-w>j
-nmap <C-k> <C-w>k
-nmap <C-h> <C-w>h
-nmap <C-l> <C-w>l
-" Bind jk in insert mode to Escape, leaving insert mode.
-inoremap jk <Esc>
-inoremap <Esc> <Nop>
