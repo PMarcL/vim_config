@@ -11,6 +11,7 @@ call plug#end()
 filetype plugin indent on
 syntax on
 
+let g:gruvbox_contrast_dark = 'hard'
 colorscheme gruvbox
 set background=dark
 set completeopt-=preview
