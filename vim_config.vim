@@ -3,7 +3,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'scrooloose/nerdtree'
 Plug 'tikhomirov/vim-glsl'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', { 'do': { ->fzf#install() } }
+Plug 'junegunn/fzf.vim',
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
@@ -84,8 +85,8 @@ nmap <silent> gr <Plug>(coc-references)
 " Highlight symbol under cursor on CursorHold.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" CtrlP setup
+" fzf setup
 
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'ra'
+let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
+let $FZF_DEFAULT_OPTS='--reverse'
+nnoremap <C-p> :Files<CR>
